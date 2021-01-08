@@ -25,46 +25,31 @@ void pagos(){
 	 cin >> pago;
 	 cout<< endl;
 	cout << "********FORMA DE PAGO********  \n";
-			cout << "1-AHORROS"<< endl;;
-			cout << "2-EFECTIVO "<< endl;;
-			cout << "3-TARJETA "<< endl;;
-	
+			cout << "1-EFECTIVO"<< endl;;
+			cout << "2-TARJETA "<< endl;;
+			cout << "3-AHORRO "<< endl;;
 			cin >> opc3;
-				system("cls");	
-	     do
-			{
-			switch (opc3){	
+			switch (opc3)
+			{	
 				case 1:
-					
-					ahorro-=pago;
-					system("pause");
-		
-					break;
-					
-				case 2:
-			
-					efectivo-=pago; 
-					system("pause");
-				 
-				    
-					break;
-					
-				case 3:
-			
-					tarjeta-=pago;
-					system("pause");
+					efectivo=efectivo-pago; 
 				
 					break;
-					
+				case 2:
+					tarjeta=tarjeta -pago;
+					break;
+				case 3:
+				
+					ahorro=ahorro-pago;
+					break;
 				case 4:
 					break;
-					
 					break;	
 					
 					
-				}
-		} while (opc3 != 4);
-}	
+				} 
+		}
+	
 
 //ingreso de dinero
 void ingresos(){
@@ -80,18 +65,12 @@ void ingresos(){
   	{
   	   case 1:
   	   	      efectivo=efectivo+abono; 
-  	   	      cout<<" saldo en efectivo es: "<< efectivo;
-  	   	      cout<<endl;
 		    break;
-			
 	  case 2:
 	  	   tarjeta=tarjeta+abono;
-	  	   cout<<endl;
 	       break;	
 	    case 3:
 	    	ahorro=ahorro+abono;
-	    
-	  	   cout<<endl;
 	    	break;
 	    	case 4:
 	    	     break;
@@ -113,7 +92,7 @@ int main() {
 	system("color 0a");
 
   	
-	    	cout << "---------------------------------------------------\n" ;
+	    cout << "---------------------------------------------------\n" ;
 		cout << "---------********BIENBENIDO*******----------------- \n";
 		cout << "---------------------------------------------------\n"	;
 		cout << endl;        
