@@ -2,27 +2,50 @@
 #include<stdlib.h>
 #include<conio.h>
 using namespace std;
-int tarjeta=0,efectivo=0,ahorro=0,pago=0,abono=0;
+int tarjeta=0,efectivo=0,ahorro=0,pago=0,abono=0,gasta=0;
+int comp=0,comp2=0,comp3=0,comp4=0;
 int ingreso,opc,opc2,opc3,contador;
+string compra;
 
 
 //saldos totales 
 void saldos_toales(){
 	
 	cout<<"******************************************* "<<endl;
-    cout<<"***** GASTOS REALISADOS ******** "<<endl;
+    cout<<"********** SALDOS************ "<<endl;
     cout<<"tranferencuas realisadas "<< contador<<endl;
     cout<<"SALDO EFECTIVO "<<efectivo <<endl;
     cout<<"SALDO EN TARJETA : "<<tarjeta<<endl;
     cout<<"SALDO DE AHORROS "<<ahorro<<endl;
+    cout << "GASTO DE AGUA " <<comp3 <<endl;
+    cout << "GASTO DE luz  " <<comp2 <<endl;
+    cout << "GASTO DE COMIDA  " <<comp <<endl;
+    cout << "GASTO EN OTROS  " <<comp4 <<endl;
+    cout<<"GASTOS TOTALES  : "<<gasta<<endl;
     cout<<"******************************************* "<<endl;	
 }
 
+
+void realiso (){
+	if (compra == "comida " ){
+	comp+= pago;
+	}
+	else if (compra == "luz "){
+		comp2+=pago;
+	} 
+ if (compra == "agua "){
+	 	comp3+=pago;
+	 	}
+	 	else 
+	 	comp4+=pago ;
+} 
+
 // realisar pagos 
 void pagos(){
-	
+
 	 cout<< "INGRESE CANTIDAD A PAGAR \n";
 	 cin >> pago;
+	
 	 cout<< endl;
 	cout << "********FORMA DE PAGO********  \n";
 			cout << "1-EFECTIVO"<< endl;;
@@ -30,6 +53,7 @@ void pagos(){
 			cout << "3-AHORRO "<< endl;;
 			cin >> opc3;
 			switch (opc3)
+			
 			{	
 				case 1:
 					efectivo=efectivo-pago; 
@@ -48,6 +72,7 @@ void pagos(){
 					
 					
 				} 
+		gasta=gasta+pago;
 		}
 	
 
@@ -118,6 +143,8 @@ int main() {
 				    break;
 				case 2:
 				pagos();
+			 cout<<" CONSEPTO DE PAGO ";
+	          cin >> compra;
 			system("pause");
 		    system ("cls");
 					break;
