@@ -3,23 +3,26 @@
 #include<conio.h>
 using namespace std;
 int tarjeta=0,efectivo=0,ahorro=0,pago=0,abono=0,gasta=0,total=0;
-int comp=0,comp2=0,comp3=0,comp4=0,tranfiere=0;
+int comp=0,comp2=0,comp3=0,comp4=0,tranfiere=0,saldo1=0;
 int ing=0,ing2=0,ing3=0,ing4=0;
 int ingreso,opc,opc2,opc3,ope4,ope5,contador,cuenta,cuenta2;
 
-
 //saldos totales 
 void saldos_toales(){
+	saldo1=efectivo+tarjeta+ahorro;
+	cout<<endl;
+	cout<<"TRANSACCIONES REALISADASA :"<< contador<<endl;
 	cout<<endl;
     cout<<"********** SALDOS EN CUENTA  ************ "<<endl;
-    cout<<"tranferencuas realisadas:"<< contador<<endl;
     cout<<"SALDO EFECTIVO:        "<<efectivo <<endl;
     cout<<"SALDO EN TARJETA:      "<<tarjeta<<endl;
     cout<<"SALDO DE AHORROS:      "<<ahorro<<endl;
+    cout<<"                    ________ "<<endl;
+    cout<<"SALDO TOTALES:         "<<saldo1<<endl;
     cout<<endl;
-    cout<<"********** CONSEPTO DE PAGOS REALISADOS  ************ "<<endl;
+    cout<<"********** CONSEPTO DE ENTRADAS REALISADAS  ************ "<<endl;
    	cout << "NOMINA/TRABAJO:            "<<ing<< endl;
-	cout << "PRESTAMO:                  "<< ing2<<endl;
+	cout << "PRESTAMO:                  "<<ing2<<endl;
 	cout << "TRABAJOS EXTRAS:           "<<ing3<< endl;
 	cout << "VENTAS:                    "<<ing4<<endl;
 	cout<<"                        ________ "<<endl;
@@ -55,13 +58,13 @@ void tranferencias (){
 	
 	 if ((cuenta==1 and cuenta2==1) || (cuenta==2 and cuenta2==2) || (cuenta==3 and cuenta2==3)) {
 	 	cout<< endl;
-	 	cout<<"NO PUEDES TRANFERER A LA MISMA CUENTA  "<<endl;
-	 
+	 	cout<<"!!!!!NO PUEDES TRANFERER A LA MISMA CUENTA!!!!  "<<endl;
+	 	cout<< endl;
 	 }
-	cout<<"INGRESE LA CANTIDAD A TRANFERIR ";
-	cin>> tranfiere; 
+
 	  if (cuenta==1 && cuenta2==2){
-	  	
+	 	cout<<"INGRESE LA CANTIDAD A TRANFERIR ";
+	    cin>> tranfiere;  	
 	  	  if (efectivo < tranfiere )
 			{
 	  		cout<<"NO TIENES SUFICIENTE DINERO PARA TRANFERIR DE CUENTA A CUENTA "<<endl;
@@ -74,7 +77,8 @@ void tranferencias (){
 		  }
 		  //tranferencia 1 de 2 
 		  	  if (cuenta==1 && cuenta2==3){
-	  	
+	  		cout<<"INGRESE LA CANTIDAD A TRANFERIR ";
+	        cin>> tranfiere; 
 	  	  if (efectivo < tranfiere )
 			{
 	  		cout<<"NO TIENES SUFICIENTE DINERO PARA TRANFERIR DE CUENTA A CUENTA "<<endl;
@@ -87,6 +91,8 @@ void tranferencias (){
 		  }
     //tranferencia 1 de2 
     if (cuenta==2 && cuenta2==1){
+    		cout<<"INGRESE LA CANTIDAD A TRANFERIR ";
+	        cin>> tranfiere; 
 	  	  if (tarjeta < tranfiere )
 			{
 	  		cout<<"NO TIENES SUFICIENTE DINERO PARA TRANFERIR DE CUENTA A CUENTA "<<endl;
@@ -99,7 +105,8 @@ void tranferencias (){
 		  }
 		  //tranferencia 2 de 2 
 		  	  if (cuenta==2 && cuenta2==3){
-	  	
+	  		cout<<"INGRESE LA CANTIDAD A TRANFERIR ";
+	        cin>> tranfiere; 
 	  	  if (tarjeta  < tranfiere )
 			{
 	  		cout<<"NO TIENES SUFICIENTE DINERO PARA TRANFERIR DE CUENTA A CUENTA "<<endl;
@@ -111,7 +118,8 @@ void tranferencias (){
 		  }
 	//tranferencia 1 de 3
 	if (cuenta==3 && cuenta2==1){
-	  	
+	  		cout<<"INGRESE LA CANTIDAD A TRANFERIR ";
+	        cin>> tranfiere; 
 	  	  if (ahorro < tranfiere )
 			{
 	  		cout<<"NO TIENES SUFICIENTE DINERO PARA TRANFERIR DE CUENTA A CUENTA "<<endl;
@@ -124,7 +132,8 @@ void tranferencias (){
 		  }
 		  //tranferencia 1 de 2 
 		  	  if (cuenta==3 && cuenta2==2){
-	  	
+	  		cout<<"INGRESE LA CANTIDAD A TRANFERIR ";
+	        cin>> tranfiere; 
 	  	  if (ahorro < tranfiere )
 			{
 	  		cout<<"NO TIENES SUFICIENTE DINERO PARA TRANFERIR DE CUENTA A CUENTA "<<endl;
@@ -136,19 +145,6 @@ void tranferencias (){
 			  }
 		  }
 	 }
-	 
-
-
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-
 // consepto de entrada de dinero 
 void ing_registro(){
 	 cout<< endl;
@@ -274,12 +270,15 @@ int main() {
 		//cambia color de letra y fondo 
 	system("color 0a");
 	    cout << "---------------------------------------------------\n" ;
-		cout << "---------********BIENBENIDO*******----------------- \n";
+		cout << "---------********BIENVENIDO*******----------------- \n";
 		cout << "---------------------------------------------------\n"	;
 				//MENU PRICIPAR PARA EL CLIENTE 
 			do
 			{	
-			    cout<< endl;	
+			    cout<< endl;
+				cout << "  TECLEE LO QUE DECEA HACER  "<<endl;
+				cout<<"**********************************"<<endl;	
+				cout<<endl;
 				cout << "1-INGRESAR DINERO"<< endl;
 				cout << "2-GASTOS "<< endl;
 				cout << "3-TRANFERENCIA "<< endl;
@@ -288,8 +287,9 @@ int main() {
 				cin >> opc;
 				system("cls");
 			switch (opc){	
-			contador+=1;
+			
 				case 1:
+				contador+=1;
 				ingresos();
 				system ("cls");
 				ing_registro();
@@ -297,6 +297,7 @@ int main() {
 		    system ("cls");
 				    break;
 				case 2:
+				contador+=1;
 				pagos();
 				  system ("cls");
 				realiso ();
@@ -304,11 +305,13 @@ int main() {
 		    system ("cls");
 					break;
 				case 3:
+					contador+=1;
 					tranferencias ();
 			system("pause");
 		    system ("cls");
 					break;	
 				case 4:
+				
 			  saldos_toales();
 			system("pause");
 		    system ("cls");
@@ -318,6 +321,6 @@ int main() {
 				 break;
 				 	
 				}
-	} while (opc2 != 5);	
+	} while (opc != 5);	
 	return 0;
 }
