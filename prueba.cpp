@@ -1,11 +1,62 @@
 #include <iostream>
 #include<stdlib.h>
 #include<conio.h>
+// para abiri archivos 
+#include <fstream>
+
 using namespace std;
 int tarjeta=0,efectivo=0,ahorro=0,pago=0,abono=0,gasta=0,total=0;
 int comp=0,comp2=0,comp3=0,comp4=0,tranfiere=0,saldo1=0;
 int ing=0,ing2=0,ing3=0,ing4=0;
 int ingreso,opc,opc2,opc3,ope4,ope5,contador,cuenta,cuenta2;
+// declaracion de archivo 
+fstream docu;
+//auxiliar para documento
+string doc_aux,usuario;
+
+void datos_guardados()
+{
+//en este paso se abre el archivo documento 
+docu.open(doc_aux.c_str());
+docu<<efectivo<<'\n';
+docu<<tarjeta<<'\n';
+docu<<ahorro<<'\n';
+docu<<saldo1<<'\n';
+docu<<ing<<'\n';
+docu<<ing2<<'\n';
+docu<<ing3<<'\n';
+docu<<ing4<<'\n';
+docu<<total<<'\n';
+docu<<comp3<<'\n';
+docu<<comp2<<'\n';
+docu<<comp<<'\n';
+docu<<comp4<<'\n';
+docu<<gasta<<'\n';
+docu.close();
+}
+
+void abrir_datos(){
+	//agregara archivos 
+	docu.open(doc_aux.c_str());
+docu>>efectivo;
+docu>>tarjeta;
+docu>>ahorro;
+docu>>saldo1;
+docu>>ing;
+docu>>ing2;
+docu>>ing3;
+docu>>ing4;
+docu>>total;
+docu>>comp3;
+docu>>comp2;
+docu>>comp;
+docu>>comp4;
+docu>>gasta;
+	
+	docu.close();
+	
+	
+}
 
 //saldos totales 
 void saldos_toales(){
@@ -265,16 +316,28 @@ void ingresos(){
 
   	total=total+abono;
   }
-	
+	void usuarios(){
+		cout<< endl;
+		cout<<"INGRESE SU USUARIO ";
+		cin>>usuario;
+		doc_aux=usuario + ".txt";
+		system ("cls");
+		docu.open(doc_aux.c_str(),ios::app);
+		docu.close();
+	}
 int main() {
 		//cambia color de letra y fondo 
 	system("color 0a");
+	usuarios();
 	    cout << "---------------------------------------------------\n" ;
 		cout << "---------********BIENVENIDO*******----------------- \n";
 		cout << "---------------------------------------------------\n"	;
 				//MENU PRICIPAR PARA EL CLIENTE 
 			do
+			//INGRESA DATOS AL ARCHIVO
 			{	
+				abrir_datos();
+				
 			    cout<< endl;
 				cout << "  TECLEE LO QUE DECEA HACER  "<<endl;
 				cout<<"**********************************"<<endl;	
@@ -283,7 +346,8 @@ int main() {
 				cout << "2-GASTOS "<< endl;
 				cout << "3-TRANFERENCIA "<< endl;
 				cout << "4-SALDO ACTUAL Y TRAMITES REALISADOS"<< endl;
-				cout << "5-SALIR \n" << endl;
+				cout << "5- CAMBIAR DE USUARIO "<<endl;
+				cout << "6-SALIR \n" << endl;
 				cin >> opc;
 				system("cls");
 			switch (opc){	
@@ -293,22 +357,27 @@ int main() {
 				ingresos();
 				system ("cls");
 				ing_registro();
+				datos_guardados();
 			system("pause");
 		    system ("cls");
+		    abrir_datos();
 				    break;
 				case 2:
 				contador+=1;
 				pagos();
 				  system ("cls");
 				realiso ();
+					datos_guardados();
 			system("pause");
 		    system ("cls");
+		    
 					break;
 				case 3:
 					contador+=1;
 					tranferencias ();
 			system("pause");
 		    system ("cls");
+		  	datos_guardados();
 					break;	
 				case 4:
 				
@@ -317,10 +386,13 @@ int main() {
 		    system ("cls");
 				break;	
 				 case 5:
-				 break;
+				 usuarios();
 				 break;
 				 	
+			case 6:
+				break;
+				break;
 				}
-	} while (opc != 5);	
+	} while (opc != 6);	
 	return 0;
 }
